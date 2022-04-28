@@ -1,0 +1,83 @@
+name: Workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: "✏️ Bump version and push tag"
+      id: tagging
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: false
+    - name: "🖨️ Print new tag to console"
+      run: |
+        echo ${{steps.tagging.outputs.new_tag}}
+    - name: "Update repo"
+      run: |
+        git fetch --prune --unshallow
+    - name: "Bump version package.json"
+      run: |
+        npm version --git-tag-version=false ${{steps.tagging.outputs.new_tag}}
+    - name: "Bump version Dockerfile"
+      run: |
+        sed -ie "s/LABEL version=\"*.*.*\"/LABEL version=\"${{steps.tagging.outputs.new_tag}}\"/" docker/Dockerfile
+    - name: "✏️ Generate full changelog"
+      uses: heinrichreimer/github-changelog-generator-action@v2.3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        headerLabel: "# 📑 Changelog"
+        breakingLabel: '### 💥 Breaking'
+        enhancementLabel: '### 🚀 Enhancements'
+        bugsLabel: '### 🐛 Bug fixes'
+        deprecatedLabel: '### ⚠️ Deprecations'
+        removedLabel: '### 🔥 Removals'
+        securityLabel: '### 🛡️ Security'
+        issuesLabel: '### 📁 Other issues'
+        prLabel: '### 📁 Other pull requests'
+        addSections: '{"documentation":{"prefix":"### 📖 Documentation","labels":["documentation"]},"tests":{"prefix":"### ✅ Testing","labels":["tests"]}}'
+        issues: true
+        issuesWoLabels: true
+        pullRequests: true
+        prWoLabels: true
+        author: true
+        unreleased: true
+        compareLink: true
+        stripGeneratorNotice: true
+        verbose: true
+    - name: "🖨️ Print changelog to console"
+      run: cat CHANGELOG.md
+    - name: "📤 Commit files"
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -am "Update changelog and version"
+        git push
+        git tag -d ${{steps.tagging.outputs.new_tag}}
+        git push origin :${{steps.tagging.outputs.new_tag}}
+        git tag ${{steps.tagging.outputs.new_tag}}
+        git push origin ${{steps.tagging.outputs.new_tag}}
+    - name: "Update repo"
+      run: |
+        git fetch --prune
+    - name: "✏️ Generate release changelog"
+      id: generate-release-changelog
+      uses: heinrichreimer/github-changelog-generator-action@v2.3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        onlyLastTag: "true"
+        stripHeaders: "true"
+        stripGeneratorNotice: "true"
+    - name: "🚀 Create GitHub release"
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{steps.tagging.outputs.new_tag}}
+        release_name: Release ${{steps.tagging.outputs.new_tag}}
+        body: ${{ steps.generate-release-changelog.outputs.changelog }}
