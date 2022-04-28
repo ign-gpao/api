@@ -8,7 +8,7 @@ jobs:
   tag:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: "✏️ Bump version and push tag"
       id: tagging
       uses: anothrNick/github-tag-action@1.36.0
