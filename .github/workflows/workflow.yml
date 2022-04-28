@@ -21,7 +21,7 @@ jobs:
     - name: "Update repo"
       run: |
         whoami
-        ls -lah
+        ls -lah .git
         git fetch --prune --unshallow
     - name: "Bump version package.json"
       run: |
