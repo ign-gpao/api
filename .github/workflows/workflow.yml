@@ -22,7 +22,7 @@ jobs:
       run: |
         whoami
         ls -lah .git
-        chmod -R 777 .git
+        sudo chmod -R 777 .git
         ls -lah .git
         git fetch --prune --unshallow
         
