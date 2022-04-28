@@ -20,6 +20,8 @@ jobs:
         echo ${{steps.tagging.outputs.new_tag}}
     - name: "Update repo"
       run: |
+        whoami
+        ls -lah
         git fetch --prune
     - name: "Bump version package.json"
       run: |
