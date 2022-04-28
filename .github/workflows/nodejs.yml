@@ -19,7 +19,7 @@ jobs:
       uses: actions/setup-node@v1
       
     - name: API Install dependencies
-      working-directory: ./api
+      working-directory: .
       run: | 
         npm install
         
