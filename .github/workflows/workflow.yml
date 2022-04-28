@@ -18,11 +18,19 @@ jobs:
     - name: "🖨️ Print new tag to console"
       run: |
         echo ${{steps.tagging.outputs.new_tag}}
-    - name: "Update repo"
-      run: |
-        whoami
-        ls -lah .git
-        git fetch --prune --unshallow
+    # - name: "Update repo"
+    #   run: |
+    #     whoami
+    #     ls -lah .git
+    #     git fetch --prune --unshallow
+    - name: repo-sync
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: ""
+        source_branch: ""
+        destination_branch: ""
+        sync_tags: "true"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: "Bump version package.json"
       run: |
         npm version --git-tag-version=false ${{steps.tagging.outputs.new_tag}}
