@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  api-gpao:
+    # build:
+    #   context: ./
+    #   dockerfile: docker/Dockerfile
+    container_name: api-gpao
+    hostname: api-gpao
+    image: gpao/api-gpao:latest
+    restart: always
+    environment:
+     - SERVER_HOSTNAME:$PATH
+    env_file:
+     - docker/api.env
+    ports:
+      - 8080:8080
+    networks:
+      - gpao-network
+networks:
+  gpao-network:
+    name: gpao-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.201.0.1/16

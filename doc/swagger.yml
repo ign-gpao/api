@@ -1,0 +1,489 @@
+openapi: "3.0.1"
+info: 
+  title: "API GPAO"
+  version: "1.0.0"
+  description: "Documentation de l'API mise en place dans le cadre de la refonte de la GPAO."
+servers:
+  - url: "http://localhost:8080/api"
+    description: "Serveur de production"
+tags:
+  - name: jobs
+    description: Manipulation des jobs
+  - name: projects
+    description: Manipulation des projets
+  - name: sessions
+    description: Manipulation des sessions
+  - name: client
+    description: Gestion du client python
+  - name: nodes
+    description: Gestion des noeuds
+  - name: maintenance
+    description: Effectue des opérations de maintenance sur la GPAO
+paths:
+  '/jobs':
+    get:
+      tags:
+        - jobs
+      summary: "Récupération de tous les jobs"
+      description: "Récupération de tous les jobs quelque soit son statut"
+      responses:
+        '200':
+          description: OK
+  '/jobs/reinit':
+    post:
+      tags:
+        - jobs
+      summary: "Réinitialisation des jobs"
+      description: "Réinitialise le statut à ready, le log, start_date, end_date, return_code de tous les jobs passé en paramétre"
+      requestBody:
+        description: l'ensemble des identifiants des jobs à réinitialiser
+        required: true
+        content:
+         application/json:
+           schema:
+              type: object
+              properties:
+                  ids:
+                    type: array
+                    items:
+                      type: integer
+              example:
+                ids:
+                  - 1
+                  - 2
+                  - 3
+      responses:
+        '200':
+          description: OK
+  '/jobs/status':
+    get:
+      tags:
+        - jobs
+      summary: "Récupération du nombre de jobs par statut"
+      description: "Récupération du nombre de jobs par statut et du total de jobs dans la base"
+      responses:
+        '200':
+          description: OK
+  '/job/{id}':
+    get:
+      tags:
+        - jobs
+      summary: "Récupération d'un job en particulier"
+      description: "Récupération de toutes les informations relatives à un job en fonction de son id"
+      parameters:
+        - in: path
+          name: id
+          description: l'identifiant du job
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  '/job/ready':
+    get:
+      tags:
+        - jobs
+      summary: "Récupération de l'identifiant d'un job"
+      description: "Récupération de l'identifiant d'un job avec le statut ready et mise à jour de son à jour de son statut en running"
+      parameters:
+        - in: query
+          name: id_session
+          description: l'identifiant de session
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  '/job/{id}/dependencies':
+    get:
+      tags:
+        - jobs
+      summary: "Récupération des dépendances"
+      description: "Récupération de toutes les dépendances liées à un job"
+      parameters:
+        - in: path
+          name: id
+          description: l'identifiant du job pour lequel on souhaite récupérer les dépendances
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  '/job':
+    post:
+      tags:
+        - jobs
+      summary: "Mise à jour d'un job"
+      description: "Permet de mettre à jour le log et le statut d'un job en fonction de son identifiant"
+      parameters:
+        - in: query
+          name: id
+          description: l'identifiant du job à modifier
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: status
+          description: le statut du job à modifier
+          required: true
+          schema:
+            type: string
+            enum:
+              - failed
+              - done
+        - in: query
+          name: returnCode
+          description: le code de retour de la commande
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: log en sortie du script
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                log:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  '/job/{id}/appendLog':
+    post:
+      tags:
+        - jobs
+      summary: "Enrichissement du log"
+      description: "Permet de mettre à jour le log et le statut d'un job en fonction de son identifiant"
+      parameters:
+        - in: path
+          name: id
+          description: l'identifiant du job à modifier
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: log en sortie du script
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                log:
+                  type: string
+      responses:
+        '200':
+          description: OK
+
+  '/project':
+    put:
+     tags:
+       - projects
+     summary: "Ajout d'un projet"
+     description: "Permet d ajout un projet avec ses differents jobs"
+     requestBody:
+       description: la structure du projet
+       required: true
+       content:
+         application/json:
+           schema:
+              type: object
+              properties:
+                projects:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/projects'
+              example: 
+                projects:
+                  - name: Chantier 1
+                    jobs:
+                      - name: jobs 1
+                        command: touch file1
+                      - name: jobs 2
+                        command: touch file2
+                      - name: jobs 3
+                        command: touch file3
+                        deps:
+                          - id: 0
+                          - id: 1
+                  - name: Chantier 2
+                    jobs:
+                      - name: jobs 1
+                        command: touch file1
+                    deps:
+                      - id: 0
+     responses:
+       '200':
+         description: OK
+  '/project/{id}':
+    delete:
+     tags:
+       - projects
+     summary: "Suppression d'un projet"
+     parameters:
+        - in: path
+          name: id
+          description: l'identifiant du job à supprimer
+          required: true
+          schema:
+            type: integer
+     responses:
+       '200':
+         description: OK
+       '404':
+         description: Not Found
+    get:
+      tags:
+        - projects
+      summary: "Récupération d'un projet en particulier"
+      description: "Récupération de toutes les informations relatives à un projet en fonction de son id"
+      parameters:
+        - in: path
+          name: id
+          description: l'identifiant du projet
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  '/project/{id}/dependencies':
+    get:
+      tags:
+        - projects
+      summary: "Récupération des dépendances"
+      description: "Récupération de toutes les dépendances liées à un projet"
+      parameters:
+        - in: path
+          name: id
+          description: l'identifiant du projet pour lequel on souhaite récupérer les dépendances
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  '/project/{id}/setPriority':
+    post:
+     tags:
+       - projects
+     summary: "Changement de la priorité des jobs du projet"
+     parameters:
+        - in: path
+          name: id
+          description: l'identifiant du projet à modififier
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: priority
+          description: priority
+          required: true
+          schema:
+            type: string
+            enum:
+              - low
+              - normal
+              - high
+     responses:
+       '200':
+         description: OK
+       '404':
+         description: Not Found
+  '/projects':
+    get:
+     tags:
+       - projects
+     summary: "Récupération de tous les projets"
+     description: "Récupération de tous les projets quelque soit leur statut"
+     responses:
+       '200':
+         description: OK
+  '/projects/statusByJobs':
+    get:
+      tags:
+        - projects
+      summary: "Récupération du nombre de job pour chaque statut différents"
+      description: "Récupération de tous les projets avec le nombre de jobs par statut"
+      responses:
+        '200':
+          description: OK
+  '/projects/status':
+    get:
+      tags:
+        - projects
+      summary: "Récupération du statut global de tous les projets"
+      description: "Récupération du nombre de projet par statut"
+      responses:
+        '200':
+          description: OK
+  '/projects/delete':
+    delete:
+     tags:
+       - projects
+     summary: "Supprime tous les projets de la base"
+     description: "Supprime tous les projets de la base ainsi que les jobs, dependances correspondantes"
+     responses:
+       '200':
+         description: OK
+  '/nodes':
+    get:
+      tags:
+        - nodes
+      summary: "Récupération de toutes les machines"
+      description: "Récupération de toutes les machines"
+      responses:
+        '200':
+          description: OK
+  '/node/setNbActive':
+    post:
+      tags:
+        - nodes
+      summary: "Réglage du nombre de coeurs actifs pour une machine"
+      description: "Réglage du nombre de coeurs actifs pour une machine"
+      parameters:
+        - in: query
+          name: host
+          description: hostname
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: le nb max de coeurs actifs
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  '/sessions':
+    get:
+      tags:
+        - sessions
+      summary: "Récupération de toutes les sessions"
+      description: "Récupération de toutes les sessions enregistrées dans la table sessions"
+      responses:
+        '200':
+          description: OK
+  '/sessions/status':
+    get:
+      tags:
+        - sessions
+      summary: "Récupération du statut de toutes les sessions"
+      description: "Récupération du nombre de sessions pour chaque type de statut"
+      responses:
+        '200':
+          description: OK
+  '/session':
+    put:
+      tags:
+        - sessions
+      summary: "Insetion d'une session dans la base"
+      description: "Insertion d'un client en précisant le nom de la machine"
+      parameters: 
+        - in: query
+          name: host
+          description: le nom de la machine
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: tags
+          description: une liste de tags
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+  '/session/close':
+    post:
+      tags:
+        - sessions
+      summary: "Fermeture d'une session"
+      description: "Fermeture d'une session"
+      parameters: 
+        - in: query
+          name: id
+          description: id de session
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+  '/session/cleanUnused':
+    delete:
+      tags:
+        - sessions
+      summary: "Supprime les sessions inutiles"
+      description: "Supprime les sessions dont le statut est 'closed' est qui ne sont pas intervenues dans les calculs"
+      responses:
+        '200':
+          description: OK
+  '/client':
+    get:
+      tags:
+        - client
+      summary: Renvoie le client Python
+      description: Permet de télécharger le client GPAO écrit en Python ainsi que tous les fichiers utiles à son execution sous forme de zip
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+                example: attachment; filename="client.zip"
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+  '/maintenance/cleanDatabase':
+    get:
+      tags:
+        - maintenance
+      summary: "Nettoie la base"
+      description: "Nettoie le contenu de toutes les tables de la base GPAO pour ne garder que la structure"
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    projects:
+      properties:
+        name:
+          type: string
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/jobs'
+        deps:
+          type: array
+          items:
+            $ref: '#/components/schemas/dependency'
+    jobs:
+      properties:
+        name:
+          type: string
+        command:
+          type: string
+        deps:
+          type: array
+          items:
+            $ref: '#/components/schemas/dependency'
+        tags:
+          type: array
+          items:
+            type: string
+    dependency:
+      properties:
+        id:
+          type: integer

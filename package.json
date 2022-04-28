@@ -1,0 +1,46 @@
+{
+  "name": "api-gpao",
+  "version": "1.0.0",
+  "description": "api pour IGN/GPAO",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ign-gpao/api-gpao.git"
+  },
+  "main": "serveur.js",
+  "scripts": {
+    "lint": "eslint .",
+    "start": "supervisor -e node,js,yml serveur.js",
+    "test": "nyc --reporter=text mocha",
+    "test-coveralls": "nyc --reporter=lcov --report-dir=coverage mocha"
+  },
+  "author": "IGN",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "adm-zip": "^0.5.9",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "express": "^4.18.0",
+    "express-json-validator-middleware": "^2.2.1",
+    "express-validator": "^6.14.0",
+    "install": "^0.13.0",
+    "jsonschema": "^1.4.0",
+    "npm": "^8.7.0",
+    "pg": "^8.7.3",
+    "swagger-editor-dist": "^4.2.4",
+    "swagger-ui-dist": "^4.10.3",
+    "swagger-ui-express": "^4.3.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "mocha": "^9.2.2",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^15.1.0"
+  }
+}
