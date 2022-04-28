@@ -22,7 +22,7 @@ jobs:
       run: |
         whoami
         ls -lah
-        git fetch --prune
+        git fetch --prune --unshallow
     - name: "Bump version package.json"
       run: |
         npm version --git-tag-version=false ${{steps.tagging.outputs.new_tag}}
