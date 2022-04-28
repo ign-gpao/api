@@ -20,7 +20,7 @@ jobs:
         echo ${{steps.tagging.outputs.new_tag}}
     - name: "Update repo"
       run: |
-        git fetch --prune --unshallow
+        git fetch --prune
     - name: "Bump version package.json"
       run: |
         npm version --git-tag-version=false ${{steps.tagging.outputs.new_tag}}
