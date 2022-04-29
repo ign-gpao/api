@@ -109,6 +109,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: gpao/api-gpao:${{steps.tagging.outputs.new_tag}},latest
+        tags: gpao/api-gpao:${{steps.tagging.outputs.new_tag}},gpao/api-gpao:latest
         context: .
         file: docker/Dockerfile
