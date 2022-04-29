@@ -1,6 +1,6 @@
 {
   "name": "api-gpao",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "api pour IGN/GPAO",
   "repository": {
     "type": "git",
