@@ -1,12 +1,16 @@
 # 📑 Changelog
 
-## [1.1.0](https://github.com/ign-gpao/api/tree/1.1.0) (2022-04-29)
+## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.0.0...1.1.0)
+[Full Changelog](https://github.com/ign-gpao/api/compare/0.2.0...HEAD)
 
-## [1.0.0](https://github.com/ign-gpao/api/tree/1.0.0) (2022-04-29)
+### 📁 Other issues
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/0.1.0...1.0.0)
+- Api : Migration [\#1](https://github.com/ign-gpao/api/issues/1)
+
+## [0.2.0](https://github.com/ign-gpao/api/tree/0.2.0) (2022-04-29)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/0.1.0...0.2.0)
 
 ## [0.1.0](https://github.com/ign-gpao/api/tree/0.1.0) (2022-04-28)
 
