@@ -69,6 +69,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "github-actions[bot]"
+        git add CHANGELOG.md
         git commit -am "Update changelog and version"
         git push
         git tag -d ${{steps.tagging.outputs.new_tag}}
@@ -108,6 +109,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: gpao/api-gpao:${{steps.tagging.outputs.new_tag}}
+        tags: gpao/api-gpao:${{steps.tagging.outputs.new_tag}},latest
         context: .
         file: docker/Dockerfile
