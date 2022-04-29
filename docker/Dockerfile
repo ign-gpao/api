@@ -10,6 +10,8 @@ ADD ./ /var/api
 
 WORKDIR /var/api
 
+RUN ls -alh
+
 RUN npm config set http-proxy $http_proxy
 RUN npm config set https-proxy $http_proxy
 
