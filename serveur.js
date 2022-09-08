@@ -47,5 +47,7 @@ app.use('/api', client);
 app.use('/api/', maintenance);
 
 module.exports = app.listen(PORT, () => {
-  debug.log(`URL de l'api : http://localhost:${PORT}/api \nURL de la documentation swagger : http://localhost:${PORT}/api/doc`);
+  debug.log(`URL de l'api : http://localhost:${PORT}/api`);
+  debug.log(`URL de la documentation swagger : http://localhost:${PORT}/api/doc`);
+  debug.log(`Version de l'api : ${process.env.npm_package_version}`);
 });
