@@ -9,7 +9,7 @@
   "main": "serveur.js",
   "scripts": {
     "lint": "eslint .",
-    "start": "supervisor -e node,js,yml serveur.js",
+    "start": "nodejs serveur.js",
     "test": "nyc --reporter=text mocha",
     "test-coveralls": "nyc --reporter=lcov --report-dir=coverage mocha"
   },
