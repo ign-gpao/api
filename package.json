@@ -10,6 +10,7 @@
   "scripts": {
     "lint": "eslint .",
     "start": "nodejs serveur.js",
+    "dev": "supervisor -e node,js,yml serveur.js",
     "test": "nyc --reporter=text mocha",
     "test-coveralls": "nyc --reporter=lcov --report-dir=coverage mocha"
   },
