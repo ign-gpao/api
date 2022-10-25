@@ -2,11 +2,19 @@
 
 ## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.1.1...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.2.0...HEAD)
 
-### 📁 Other issues
+### 🚀 Enhancements
 
-- Changement command lancement de l'api [\#29](https://github.com/ign-gpao/api/issues/29)
+- Trier les projet par id inverse sur le dashboard en indiquant l'id du projet. [\#31](https://github.com/ign-gpao/api/issues/31)
+
+## [1.2.0](https://github.com/ign-gpao/api/tree/1.2.0) (2022-10-25)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.1.1...1.2.0)
+
+### 🚀 Enhancements
+
+- 31 trier les projet par id inverse sur le dashboard en indiquant lid du projet [\#32](https://github.com/ign-gpao/api/pull/32) ([arnaudbirk](https://github.com/arnaudbirk))
 
 ## [1.1.1](https://github.com/ign-gpao/api/tree/1.1.1) (2022-10-20)
 
@@ -14,6 +22,7 @@
 
 ### 🚀 Enhancements
 
+- Changement command lancement de l'api [\#29](https://github.com/ign-gpao/api/issues/29)
 - Versionnement des modules [\#2](https://github.com/ign-gpao/api/issues/2)
 - \#patch replace launch command [\#30](https://github.com/ign-gpao/api/pull/30) ([arnaudbirk](https://github.com/arnaudbirk))
 
