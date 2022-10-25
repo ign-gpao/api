@@ -9,4 +9,4 @@ if [ "$(docker ps -aq -f name=api-gpao)" ]; then
     docker rm -f api-gpao
 fi
 
-npm start
+npm run dev
