@@ -150,7 +150,7 @@ async function deleteProject(req, res, next) {
 }
 
 async function getStatusByJobs(req, res, next) {
-  await req.client.query('SELECT * FROM view_project_status_by_jobs')
+  await req.client.query('SELECT * FROM view_project_status_by_jobs ORDER BY id_project DESC')
     .then((results) => {
       req.result = results.rows;
     })
