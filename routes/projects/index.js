@@ -58,6 +58,15 @@ router.delete('/projects/delete',
   pgClient.close,
   returnMsg);
 
+router.delete('/projects/deleteList',
+  // body()
+  // .exists().withMessage(createErrorMsg.getMissingParameterMsg('body')),
+  validateParams,
+  pgClient.open,
+  project.deleteList,
+  pgClient.close,
+  returnMsg);
+
 router.get('/project/:id', [
   param('id')
     .exists().withMessage(createErrorMsg.getMissingParameterMsg('id'))
