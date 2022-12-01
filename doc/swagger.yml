@@ -331,6 +331,31 @@ paths:
      responses:
        '200':
          description: OK
+  '/projects/deleteList':
+    delete:
+     tags:
+       - projects
+     summary: "Suppression d'une liste de projets"
+     description: "Supprime tous les projets d'une liste ainsi que les jobs, dependances correspondantes"
+     requestBody:
+       description: la structure du projet
+       required: true
+       content:
+         application/json:
+           schema:
+              type: object
+              properties:
+                projects:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/projects'
+              example: 
+                projects:
+                  - 1
+                  - 2
+     responses:
+       '200':
+         description: OK
   '/nodes':
     get:
       tags:
@@ -384,7 +409,7 @@ paths:
     put:
       tags:
         - sessions
-      summary: "Insetion d'une session dans la base"
+      summary: "Insertion d'une session dans la base"
       description: "Insertion d'un client en précisant le nom de la machine"
       parameters: 
         - in: query
