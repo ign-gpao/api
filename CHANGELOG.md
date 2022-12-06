@@ -2,11 +2,19 @@
 
 ## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.2.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.3.0...HEAD)
 
-### 🚀 Enhancements
+### 📁 Other issues
 
-- Trier les projet par id inverse sur le dashboard en indiquant l'id du projet. [\#31](https://github.com/ign-gpao/api/issues/31)
+- supprimer des projets à partir d'une liste d'identifiant au format json [\#34](https://github.com/ign-gpao/api/issues/34)
+
+## [1.3.0](https://github.com/ign-gpao/api/tree/1.3.0) (2022-12-06)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.2.0...1.3.0)
+
+### 📁 Other pull requests
+
+- suppression liste projets [\#36](https://github.com/ign-gpao/api/pull/36) ([ijeuffrard](https://github.com/ijeuffrard))
 
 ## [1.2.0](https://github.com/ign-gpao/api/tree/1.2.0) (2022-10-25)
 
@@ -14,6 +22,7 @@
 
 ### 🚀 Enhancements
 
+- Trier les projet par id inverse sur le dashboard en indiquant l'id du projet. [\#31](https://github.com/ign-gpao/api/issues/31)
 - 31 trier les projet par id inverse sur le dashboard en indiquant lid du projet [\#32](https://github.com/ign-gpao/api/pull/32) ([arnaudbirk](https://github.com/arnaudbirk))
 
 ## [1.1.1](https://github.com/ign-gpao/api/tree/1.1.1) (2022-10-20)
