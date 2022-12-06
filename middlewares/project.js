@@ -113,6 +113,7 @@ async function insertProjectFromJson(req, res, next) {
     // il va se baser sur les identifiants du projet précédent
     req.idJobs = [];
   }
+  req.result = req.idProjects;
   next();
 }
 
