@@ -197,14 +197,14 @@ async function deleteProjects(req, res, next) {
 async function deleteList(req, res, next) {
   const { projects } = req.body;
   await req.client.query('DELETE FROM projects WHERE id = ANY($1::int[])', [projects])
-  .then((results) => { req.result = results.rows; })
-  .catch((error) => {
-    req.error = {
-      msg: error.toString(),
-      code: 500,
-      function: 'deleteList',
-    };
-  });
+    .then((results) => { req.result = results.rows; })
+    .catch((error) => {
+      req.error = {
+        msg: error.toString(),
+        code: 500,
+        function: 'deleteList',
+      };
+    });
   next();
 }
 
