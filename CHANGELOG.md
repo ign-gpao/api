@@ -2,15 +2,27 @@
 
 ## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.3.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.4.0...HEAD)
 
-### 📁 Other issues
+### 🚀 Enhancements
 
-- supprimer des projets à partir d'une liste d'identifiant au format json [\#34](https://github.com/ign-gpao/api/issues/34)
+- api: retourner l'Id du \(ou des\) chantier\(s\) après sur la route PUT /project [\#27](https://github.com/ign-gpao/api/issues/27)
+
+## [1.4.0](https://github.com/ign-gpao/api/tree/1.4.0) (2022-12-06)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.3.0...1.4.0)
+
+### 📁 Other pull requests
+
+- fix issue 27 [\#37](https://github.com/ign-gpao/api/pull/37) ([ijeuffrard](https://github.com/ijeuffrard))
 
 ## [1.3.0](https://github.com/ign-gpao/api/tree/1.3.0) (2022-12-06)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.2.0...1.3.0)
+
+### 📁 Other issues
+
+- supprimer des projets à partir d'une liste d'identifiant au format json [\#34](https://github.com/ign-gpao/api/issues/34)
 
 ### 📁 Other pull requests
 
