@@ -3,20 +3,19 @@ const { matchedData } = require('express-validator');
 const debug = require('debug')('project');
 
 async function addSuffix(name, noSuffix, req) {
+  let newName;
   try {
     const results = await req.client.query('SELECT project_name FROM view_projects WHERE project_name=$1', [name]);
     if (results.rowCount === 0) {
       return name;
     }
-    let newName;
     if (noSuffix) {
-      newName = name + '_1';
+      newName = `${name}_1`;
     } else {
       const indexLastUnderScore = name.lastIndexOf('_');
       const suffix = name.slice(indexLastUnderScore + 1);
       newName = name.substring(0, indexLastUnderScore + 1) + (parseInt(suffix, 10) + 1);
     }
-    return await addSuffix(newName, false, req);
   } catch (error) {
     req.error = {
       msg: error.toString(),
@@ -24,6 +23,7 @@ async function addSuffix(name, noSuffix, req) {
       function: 'addSuffix',
     };
   }
+  return addSuffix(newName, false, req);
 }
 
 async function insertProject(name, req) {
