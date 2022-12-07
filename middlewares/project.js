@@ -2,6 +2,30 @@ const { matchedData } = require('express-validator');
 
 const debug = require('debug')('project');
 
+async function addSuffix(name, noSuffix, req) {
+  try {
+    const results = await req.client.query('SELECT project_name FROM view_projects WHERE project_name=$1', [name]);
+    if (results.rowCount === 0) {
+      return name;
+    }
+    let newName;
+    if (noSuffix) {
+      newName = name + '_1';
+    } else {
+      const indexLastUnderScore = name.lastIndexOf('_');
+      const suffix = name.slice(indexLastUnderScore + 1);
+      newName = name.substring(0, indexLastUnderScore + 1) + (parseInt(suffix, 10) + 1);
+    }
+    return await addSuffix(newName, false, req);
+  } catch (error) {
+    req.error = {
+      msg: error.toString(),
+      code: 500,
+      function: 'addSuffix',
+    };
+  }
+}
+
 async function insertProject(name, req) {
   debug(`Insertion du projet ${name}`);
   let idProject;
@@ -79,6 +103,7 @@ async function insertProjectFromJson(req, res, next) {
   /* eslint-disable no-restricted-syntax */
   for (const project of projects) {
     /* eslint-disable no-await-in-loop */
+    project.name = await addSuffix(project.name, true, req);
     const idProject = await insertProject(project.name, req);
     debug(`id_project = ${idProject}`);
     /* eslint-disable no-restricted-syntax */
