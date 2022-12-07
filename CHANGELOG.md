@@ -2,15 +2,27 @@
 
 ## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.4.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.5.0...HEAD)
 
 ### 🚀 Enhancements
 
-- api: retourner l'Id du \(ou des\) chantier\(s\) après sur la route PUT /project [\#27](https://github.com/ign-gpao/api/issues/27)
+- Ajout d'un suffixe au nom de projet [\#4](https://github.com/ign-gpao/api/issues/4)
+
+## [1.5.0](https://github.com/ign-gpao/api/tree/1.5.0) (2022-12-07)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.4.0...1.5.0)
+
+### 📁 Other pull requests
+
+- ajout suffixe project\_name [\#38](https://github.com/ign-gpao/api/pull/38) ([ijeuffrard](https://github.com/ijeuffrard))
 
 ## [1.4.0](https://github.com/ign-gpao/api/tree/1.4.0) (2022-12-06)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.3.0...1.4.0)
+
+### 🚀 Enhancements
+
+- api: retourner l'Id du \(ou des\) chantier\(s\) après sur la route PUT /project [\#27](https://github.com/ign-gpao/api/issues/27)
 
 ### 📁 Other pull requests
 
