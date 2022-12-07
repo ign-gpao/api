@@ -47,4 +47,13 @@ router.delete('/session/cleanUnused',
   pgClient.close,
   returnMsg);
 
+router.post('/sessions/close', [
+  query('hostname')
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('hostname'))],
+validateParams,
+pgClient.open,
+sessions.closeSessionByHostname,
+pgClient.close,
+returnMsg);
+
 module.exports = router;
