@@ -91,8 +91,7 @@ async function closeSessionByHostname(req, res, next) {
   const { hostname } = params;
   debug(hostname);
 
-  await req.client.query(
-    "SELECT clean_old_session($1) AS nb_sessions",[hostname])
+  await req.client.query('SELECT clean_old_session($1) AS nb_sessions', [hostname])
     .then((results) => { req.result = results.rows; })
     .catch((error) => {
       debug(error);
