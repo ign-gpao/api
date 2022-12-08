@@ -1,16 +1,20 @@
 # 📑 Changelog
 
-## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
+## [1.6.0](https://github.com/ign-gpao/api/tree/1.6.0) (2022-12-08)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.5.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.5.0...1.6.0)
 
-### 🚀 Enhancements
+### 📁 Other pull requests
 
-- Ajout d'un suffixe au nom de projet [\#4](https://github.com/ign-gpao/api/issues/4)
+- Add route close session [\#39](https://github.com/ign-gpao/api/pull/39) ([arnaudbirk](https://github.com/arnaudbirk))
 
 ## [1.5.0](https://github.com/ign-gpao/api/tree/1.5.0) (2022-12-07)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.4.0...1.5.0)
+
+### 🚀 Enhancements
+
+- Ajout d'un suffixe au nom de projet [\#4](https://github.com/ign-gpao/api/issues/4)
 
 ### 📁 Other pull requests
 
