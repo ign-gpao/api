@@ -84,10 +84,32 @@ async function cleanUnused(req, res, next) {
   next();
 }
 
+async function closeSessionByHostname(req, res, next) {
+  debug('closeSessionByHostname');
+  const params = matchedData(req);
+
+  const { hostname } = params;
+  debug(hostname);
+
+  await req.client.query('SELECT clean_old_session($1) AS nb_sessions', [hostname])
+    .then((results) => { req.result = results.rows; })
+    .catch((error) => {
+      debug(error);
+      req.error = {
+        msg: error.toString(),
+        code: 500,
+        function: 'closeSessionByHostname',
+      };
+    });
+  next();
+  debug('fin');
+}
+
 module.exports = {
   getAllSessions,
   getSessionStatus,
   insertSession,
   closeSession,
   cleanUnused,
+  closeSessionByHostname,
 };

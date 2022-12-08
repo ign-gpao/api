@@ -326,7 +326,7 @@ paths:
     delete:
      tags:
        - projects
-     summary: "Supprime tous les projets de la base"
+     summary: "Suppression de tous les projets de la base"
      description: "Supprime tous les projets de la base ainsi que les jobs, dependances correspondantes"
      responses:
        '200':
@@ -447,8 +447,24 @@ paths:
     delete:
       tags:
         - sessions
-      summary: "Supprime les sessions inutiles"
+      summary: "Suppression des sessions inutiles"
       description: "Supprime les sessions dont le statut est 'closed' est qui ne sont pas intervenues dans les calculs"
+      responses:
+        '200':
+          description: OK
+  '/sessions/close':
+    post:
+      tags:
+        - sessions
+      summary: "Fermeture de toutes les sessions d'une machine"
+      description: "Mets le statut à 'closed' à toutes les sessions d'une machine"
+      parameters:
+        - in: query
+          name: hostname
+          description: Nom de la machine
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
