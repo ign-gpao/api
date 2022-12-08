@@ -1,10 +1,10 @@
-const router = require('express').Router();
+// const router = require('express').Router();
 
-const client = require('../../middlewares/client');
-const returnMsg = require('../../middlewares/returnMsg');
+// const client = require('../../middlewares/client');
+// const returnMsg = require('../../middlewares/returnMsg');
 
-router.get('/client',
-  client.getClient,
-  returnMsg);
+// router.get('/client',
+//   client.getClient,
+//   returnMsg);
 
-module.exports = router;
+// module.exports = router;

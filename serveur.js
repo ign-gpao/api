@@ -11,7 +11,7 @@ const projects = require('./routes/projects');
 const sessions = require('./routes/sessions');
 const nodes = require('./routes/nodes');
 const dependencies = require('./routes/dependencies');
-const client = require('./routes/client');
+// const client = require('./routes/client');
 const maintenance = require('./routes/maintenance');
 
 const PORT = process.env.API_PORT || 8080;
@@ -43,7 +43,7 @@ app.use('/api', projects);
 app.use('/api', sessions);
 app.use('/api', nodes);
 app.use('/api', dependencies);
-app.use('/api', client);
+// app.use('/api', client);
 app.use('/api/', maintenance);
 
 module.exports = app.listen(PORT, () => {
