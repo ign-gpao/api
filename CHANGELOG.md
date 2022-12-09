@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.7.0](https://github.com/ign-gpao/api/tree/1.7.0) (2022-12-09)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.6.0...1.7.0)
+
+### 📁 Other pull requests
+
+- Coveralls [\#40](https://github.com/ign-gpao/api/pull/40) ([arnaudbirk](https://github.com/arnaudbirk))
+
 ## [1.6.0](https://github.com/ign-gpao/api/tree/1.6.0) (2022-12-08)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.5.0...1.6.0)
