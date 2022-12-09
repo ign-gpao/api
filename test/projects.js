@@ -24,6 +24,7 @@ describe('Projects', () => {
                 {
                   name: 'jobs 1',
                   command: 'touch file1',
+                  tags: ['tags1', 'tags2'],
                 },
                 {
                   name: 'jobs 2',
@@ -133,6 +134,21 @@ describe('Projects', () => {
     it('should return an array', (done) => {
       chai.request(server)
         .delete('/api/projects/delete')
+        .end((err, res) => {
+          should.equal(err, null);
+          res.should.have.status(200);
+          res.body.should.be.an('array');
+          done();
+        });
+    });
+  });
+  describe('Delete project from list', () => {
+    it('should return an array', (done) => {
+      chai.request(server)
+        .delete('/api/projects/deleteList')
+        .send({
+          projects: [0, 1],
+        })
         .end((err, res) => {
           should.equal(err, null);
           res.should.have.status(200);

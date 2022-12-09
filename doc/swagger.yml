@@ -204,6 +204,9 @@ paths:
                     jobs:
                       - name: jobs 1
                         command: touch file1
+                        tags:
+                          - tag1
+                          - tag2
                       - name: jobs 2
                         command: touch file2
                       - name: jobs 3

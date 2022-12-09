@@ -80,3 +80,17 @@ describe('Get sessions status', () => {
       });
   });
 });
+
+describe('Clean old session', () => {
+  it('close all session from host', (done) => {
+    const hostname = String(Date.now());
+    chai.request(server)
+      .post('/api/sessions/close')
+      .query({ hostname })
+      .end((err, res) => {
+        should.equal(err, null);
+        res.should.have.status(200);
+        done();
+      });
+  });
+});
