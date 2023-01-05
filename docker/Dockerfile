@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:19
 LABEL maintainer="IGN"
 LABEL version="1.7.0"
 
@@ -10,7 +10,7 @@ ADD ./ /var/api
 
 WORKDIR /var/api
 
-RUN npm config set http-proxy $http_proxy
+#RUN npm config set http-proxy $http_proxy
 RUN npm config set https-proxy $http_proxy
 
 RUN npm install -g npm
