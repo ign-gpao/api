@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.8.0](https://github.com/ign-gpao/api/tree/1.8.0) (2023-01-06)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.7.0...1.8.0)
+
+### 📁 Other pull requests
+
+- fix build docker image [\#41](https://github.com/ign-gpao/api/pull/41) ([arnaudbirk](https://github.com/arnaudbirk))
+
 ## [1.7.0](https://github.com/ign-gpao/api/tree/1.7.0) (2022-12-09)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.6.0...1.7.0)
