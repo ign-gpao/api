@@ -76,12 +76,13 @@ jobs:
         stripHeaders: "true"
         stripGeneratorNotice: "true"
     - name: "🚀 Create GitHub release"
-      uses: elgohr/Github-Release-Action@v4
+      uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        title: Release ${{steps.tagging.outputs.new_tag}}
-
+        tag_name: ${{steps.tagging.outputs.new_tag}}
+        name: Release ${{steps.tagging.outputs.new_tag}}
+        body: ${{ steps.generate-release-changelog.outputs.changelog }}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
     - name: Set up Docker Buildx
