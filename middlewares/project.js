@@ -5,7 +5,7 @@ const debug = require('debug')('project');
 async function addSuffix(name, noSuffix, req) {
   let newName;
   try {
-    const results = await req.client.query('SELECT project_name FROM view_projects WHERE project_name=$1', [name]);
+    const results = await req.client.query('SELECT name FROM projects WHERE name=$1', [name]);
     if (results.rowCount === 0) {
       return name;
     }
