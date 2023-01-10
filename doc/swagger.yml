@@ -255,6 +255,22 @@ paths:
       responses:
         '200':
           description: OK
+  '/project/{id}/jobs':
+    get:
+      tags:
+        - projects
+      summary: "Récupération des jobs d'un projet"
+      description: "Récupération de tous les jobs d'un projet particulier"
+      parameters:
+        - in: path
+          name: id
+          description: l'identifiant du projet duquel on souhaite récupérer les jobs
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK     
   '/project/{id}/dependencies':
     get:
       tags:

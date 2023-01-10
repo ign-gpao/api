@@ -106,6 +106,18 @@ describe('Projects', () => {
         });
     });
   });
+  describe('Get jobs of project', () => {
+    it('should return an array', (done) => {
+      chai.request(server)
+        .get(`/api/project/${idProject}/jobs`)
+        .end((err, res) => {
+          should.equal(err, null);
+          res.should.have.status(200);
+          res.body.should.be.an('array');
+          done();
+        });
+    });
+  });
   describe('set project priority', () => {
     it('should return an array', (done) => {
       chai.request(server)

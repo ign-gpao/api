@@ -205,6 +205,21 @@ async function getProjectStatus(req, res, next) {
   next();
 }
 
+async function getJobs(req, res, next) {
+  const params = matchedData(req);
+  const { id } = params;
+  await req.client.query('SELECT * FROM view_jobs WHERE job_id_project=$1', [id])
+    .then((results) => { req.result = results.rows; })
+    .catch((error) => {
+      req.error = {
+        msg: error.toString(),
+        code: 500,
+        function: 'getAlljobs',
+      };
+    });
+  next();
+}
+
 async function deleteProjects(req, res, next) {
   await req.client.query('TRUNCATE TABLE projects CASCADE')
     .then((results) => {
@@ -236,8 +251,8 @@ async function deleteList(req, res, next) {
 
 async function getProject(req, res, next) {
   const params = matchedData(req);
-
   const { id } = params;
+  debug('id : ', id);
   await req.client.query('SELECT * FROM view_projects WHERE project_id=$1', [id])
     .then((results) => { req.result = results.rows; })
     .catch((error) => {
@@ -277,6 +292,7 @@ module.exports = {
   getProject,
   getStatusByJobs,
   getProjectStatus,
+  getJobs,
   deleteProject,
   deleteProjects,
   deleteList,
