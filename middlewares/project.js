@@ -205,7 +205,7 @@ async function getProjectStatus(req, res, next) {
   next();
 }
 
-async function getJobs(req, res, next) {
+async function getJobsOfProject(req, res, next) {
   const params = matchedData(req);
   const { id } = params;
   await req.client.query('SELECT * FROM view_jobs WHERE job_id_project=$1', [id])
@@ -214,7 +214,7 @@ async function getJobs(req, res, next) {
       req.error = {
         msg: error.toString(),
         code: 500,
-        function: 'getJobs',
+        function: 'getJobsOfProject',
       };
     });
   next();
@@ -292,7 +292,7 @@ module.exports = {
   getProject,
   getStatusByJobs,
   getProjectStatus,
-  getJobs,
+  getJobsOfProject,
   deleteProject,
   deleteProjects,
   deleteList,

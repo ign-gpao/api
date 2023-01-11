@@ -87,7 +87,7 @@ router.get('/project/:id/jobs', [
 ],
 validateParams,
 pgClient.open,
-project.getJobs,
+project.getJobsOfProject,
 pgClient.close,
 returnMsg);
 
