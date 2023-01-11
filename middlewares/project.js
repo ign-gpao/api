@@ -214,7 +214,7 @@ async function getJobs(req, res, next) {
       req.error = {
         msg: error.toString(),
         code: 500,
-        function: 'getAlljobs',
+        function: 'getJobs',
       };
     });
   next();
