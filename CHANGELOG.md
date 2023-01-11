@@ -1,5 +1,21 @@
 # 📑 Changelog
 
+## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.10.0...HEAD)
+
+### 📁 Other issues
+
+- Recuperer les jobs d'un même projet [\#42](https://github.com/ign-gpao/api/issues/42)
+
+## [1.10.0](https://github.com/ign-gpao/api/tree/1.10.0) (2023-01-11)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.9.0...1.10.0)
+
+### 📁 Other pull requests
+
+- 42 recuperer les jobs dun même projet [\#44](https://github.com/ign-gpao/api/pull/44) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [1.9.0](https://github.com/ign-gpao/api/tree/1.9.0) (2023-01-06)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.8.0...1.9.0)
