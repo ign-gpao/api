@@ -157,25 +157,6 @@ async function getAllProjects(req, res, next) {
   next();
 }
 
-// A SUPPRIMER route delete 1 projet
-// async function deleteProject(req, res, next) {
-//   const params = matchedData(req);
-//   const { id } = params;
-//   debug('id : ', id);
-//   await req.client.query('DELETE FROM projects WHERE id=$1', [id])
-//     .then((results) => {
-//       req.result = results.rows;
-//     })
-//     .catch((error) => {
-//       req.error = {
-//         msg: error.toString(),
-//         code: 404,
-//         function: 'deleteProject',
-//       };
-//     });
-//   next();
-// }
-
 async function getStatusByJobs(req, res, next) {
   await req.client.query('SELECT * FROM view_project_status_by_jobs ORDER BY id_project DESC')
     .then((results) => {
@@ -221,37 +202,6 @@ async function getJobsOfProject(req, res, next) {
   next();
 }
 
-// A SUPPRIMER
-// async function deleteProjects(req, res, next) {
-//   await req.client.query('TRUNCATE TABLE projects CASCADE')
-//     .then((results) => {
-//       req.result = results.rows;
-//     })
-//     .catch((error) => {
-//       req.error = {
-//         msg: error.toString(),
-//         code: 404,
-//         function: 'deleteProjects',
-//       };
-//     });
-//   next();
-// }
-
-async function deleteList(req, res, next) {
-  const { ids } = req.body;
-  debug('id : ', ids);
-  await req.client.query('DELETE FROM projects WHERE id = ANY($1::int[])', [ids])
-    .then((results) => { req.result = results.rows; })
-    .catch((error) => {
-      req.error = {
-        msg: error.toString(),
-        code: 500,
-        function: 'deleteList',
-      };
-    });
-  next();
-}
-
 async function getProject(req, res, next) {
   const params = matchedData(req);
   const { id } = params;
@@ -289,6 +239,21 @@ async function setPriority(req, res, next) {
   next();
 }
 
+async function deleteProjects(req, res, next) {
+  const { ids } = req.body;
+  debug('id : ', ids);
+  await req.client.query('DELETE FROM projects WHERE id = ANY($1::int[])', [ids])
+    .then((results) => { req.result = results.rows; })
+    .catch((error) => {
+      req.error = {
+        msg: error.toString(),
+        code: 500,
+        function: 'deleteProjects',
+      };
+    });
+  next();
+}
+
 module.exports = {
   insertProjectFromJson,
   getAllProjects,
@@ -296,8 +261,6 @@ module.exports = {
   getStatusByJobs,
   getProjectStatus,
   getJobsOfProject,
-  // deleteProject,
-  // deleteProjects,
-  deleteList,
   setPriority,
+  deleteProjects,
 };
