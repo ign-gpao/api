@@ -34,7 +34,7 @@ paths:
       tags:
         - jobs
       summary: "Réinitialisation des jobs"
-      description: "Réinitialise le statut à ready, le log, start_date, end_date, return_code de tous les jobs passé en paramétre"
+      description: "Réinitialise le statut à ready, le log, start_date, end_date, return_code de tous les jobs passés en paramètre"
       requestBody:
         description: l'ensemble des identifiants des jobs à réinitialiser
         required: true
@@ -225,6 +225,7 @@ paths:
          description: OK
   '/project/{id}':
     delete:
+     deprecated: true
      tags:
        - projects
      summary: "Suppression d'un projet"
@@ -343,38 +344,39 @@ paths:
           description: OK
   '/projects/delete':
     delete:
-     tags:
-       - projects
-     summary: "Suppression de tous les projets de la base"
-     description: "Supprime tous les projets de la base ainsi que les jobs, dependances correspondantes"
-     responses:
-       '200':
-         description: OK
+      deprecated: true
+      tags:
+        - projects
+      summary: "Suppression de tous les projets de la base"
+      description: "Supprime tous les projets de la base ainsi que les jobs, dependances correspondantes"
+      responses:
+        '200':
+          description: OK
   '/projects/deleteList':
     delete:
-     tags:
-       - projects
-     summary: "Suppression d'une liste de projets"
-     description: "Supprime tous les projets d'une liste ainsi que les jobs, dependances correspondantes"
-     requestBody:
-       description: la structure du projet
-       required: true
-       content:
-         application/json:
-           schema:
-              type: object
-              properties:
-                projects:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/projects'
-              example: 
-                projects:
-                  - 1
-                  - 2
-     responses:
-       '200':
-         description: OK
+      tags:
+        - projects
+      summary: "Suppression d'une liste de projets"
+      description: "Supprime tous les projets d'une liste"
+      requestBody:
+        description: la structure du projet
+        required: true
+        content:
+          application/json:
+            schema:
+                type: object
+                properties:
+                  ids:
+                    type: array
+                    items:
+                      type: integer
+                example: 
+                  ids:
+                    - 1
+                    - 2
+      responses:
+        '200':
+          description: OK
   '/nodes':
     get:
       tags:
