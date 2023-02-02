@@ -130,37 +130,12 @@ describe('Projects', () => {
         });
     });
   });
-  //  A SUPPRIMER
-  // describe('Delete one project', () => {
-  //   it('should return an array', (done) => {
-  //     chai.request(server)
-  //       .delete(`/api/project/${idProject}`)
-  //       .end((err, res) => {
-  //         should.equal(err, null);
-  //         res.should.have.status(200);
-  //         res.body.should.be.an('array');
-  //         done();
-  //       });
-  //   });
-  // });
-  // describe('Delete all projects', () => {
-  //   it('should return an array', (done) => {
-  //     chai.request(server)
-  //       .delete('/api/projects/delete')
-  //       .end((err, res) => {
-  //         should.equal(err, null);
-  //         res.should.have.status(200);
-  //         res.body.should.be.an('array');
-  //         done();
-  //       });
-  //   });
-  // });
-  describe('Delete project from list', () => {
+  describe('Delete projects from list', () => {
     it('should return an array', (done) => {
       chai.request(server)
-        .delete('/api/projects/deleteList')
+        .delete('/api/projects/delete')
         .send({
-          projects: [0, 1],
+          ids: [0, 1],
         })
         .end((err, res) => {
           should.equal(err, null);

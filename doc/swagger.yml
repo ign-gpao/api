@@ -224,23 +224,6 @@ paths:
        '200':
          description: OK
   '/project/{id}':
-    delete:
-     deprecated: true
-     tags:
-       - projects
-     summary: "Suppression d'un projet"
-     parameters:
-        - in: path
-          name: id
-          description: l'identifiant du job à supprimer
-          required: true
-          schema:
-            type: integer
-     responses:
-       '200':
-         description: OK
-       '404':
-         description: Not Found
     get:
       tags:
         - projects
@@ -343,16 +326,6 @@ paths:
         '200':
           description: OK
   '/projects/delete':
-    delete:
-      deprecated: true
-      tags:
-        - projects
-      summary: "Suppression de tous les projets de la base"
-      description: "Supprime tous les projets de la base ainsi que les jobs, dependances correspondantes"
-      responses:
-        '200':
-          description: OK
-  '/projects/deleteList':
     delete:
       tags:
         - projects
