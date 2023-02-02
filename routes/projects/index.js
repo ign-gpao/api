@@ -23,16 +23,17 @@ router.put('/project',
   pgClient.close,
   returnMsg);
 
-router.delete('/project/:id',
-  param('id')
-    .exists().withMessage(createErrorMsg.getMissingParameterMsg('id'))
-    .isInt({ min: 1 })
-    .withMessage(createErrorMsg.getInvalidParameterMsg('id')),
-  validateParams,
-  pgClient.open,
-  project.deleteProject,
-  pgClient.close,
-  returnMsg);
+// A SUPPRIMER route delete 1 projet
+// router.delete('/project/:id',
+//   param('id')
+//     .exists().withMessage(createErrorMsg.getMissingParameterMsg('id'))
+//     .isInt({ min: 1 })
+//     .withMessage(createErrorMsg.getInvalidParameterMsg('id')),
+//   validateParams,
+//   pgClient.open,
+//   project.deleteProject,
+//   pgClient.close,
+//   returnMsg);
 
 router.get('/projects',
   pgClient.open,
@@ -52,11 +53,12 @@ router.get('/projects/status',
   pgClient.close,
   returnMsg);
 
-router.delete('/projects/delete',
-  pgClient.open,
-  project.deleteProjects,
-  pgClient.close,
-  returnMsg);
+//  A SUPPRIMER
+// router.delete('/projects/delete',
+//   pgClient.open,
+//   project.deleteProjects,
+//   pgClient.close,
+//   returnMsg);
 
 router.delete('/projects/deleteList',
   // body()
