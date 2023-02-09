@@ -2,15 +2,27 @@
 
 ## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.10.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.11.0...HEAD)
 
 ### 📁 Other issues
 
-- Recuperer les jobs d'un même projet [\#42](https://github.com/ign-gpao/api/issues/42)
+- homogeneiser routes \(reinit, delete...\) [\#45](https://github.com/ign-gpao/api/issues/45)
+
+## [1.11.0](https://github.com/ign-gpao/api/tree/1.11.0) (2023-02-09)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.10.0...1.11.0)
+
+### 📁 Other pull requests
+
+- reorg routes deleteProject deleteProjects deleteList [\#46](https://github.com/ign-gpao/api/pull/46) ([ijeuffrard](https://github.com/ijeuffrard))
 
 ## [1.10.0](https://github.com/ign-gpao/api/tree/1.10.0) (2023-01-11)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.9.0...1.10.0)
+
+### 📁 Other issues
+
+- Recuperer les jobs d'un même projet [\#42](https://github.com/ign-gpao/api/issues/42)
 
 ### 📁 Other pull requests
 
