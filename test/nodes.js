@@ -28,7 +28,10 @@ describe('Nodes', () => {
     it('manage active threads', (done) => {
       chai.request(server)
         .post('/node/setNbActive')
-        .query({ value: value })
+        .query({ value: 1 })
+        .send({
+          hosts: ['hostname_1', 'hostname_2'],
+        })
         .end((err, res) => {
           should.equal(err, null);
           res.should.have.status(200);
