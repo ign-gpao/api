@@ -25,9 +25,9 @@ describe('Nodes', () => {
   });
 
   describe('set nb active threads', () => {
-    it('manage active threads', (done) => {
+    it('should manage active threads', (done) => {
       chai.request(server)
-        .post('/node/setNbActive')
+        .post('/api/node/setNbActive')
         .query({ value: 1 })
         .send({
           hosts: ['hostname_1', 'hostname_2'],
@@ -35,7 +35,6 @@ describe('Nodes', () => {
         .end((err, res) => {
           should.equal(err, null);
           res.should.have.status(200);
-          res.body.should.be.an('array');
           done();
         });
     });

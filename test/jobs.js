@@ -22,7 +22,10 @@ describe('Jobs', () => {
         // activation de la ressource
         chai.request(server)
           .post('/api/node/setNbActive')
-          .query({ host: hostname, limit: 1 })
+          .query({ value: 1 })
+          .send({
+            hosts: [hostname],
+          })
           .end((err2, res2) => {
             should.equal(err2, null);
             res2.should.have.status(200);
