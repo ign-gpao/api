@@ -363,21 +363,32 @@ paths:
     post:
       tags:
         - nodes
-      summary: "Réglage du nombre de coeurs actifs pour une machine"
-      description: "Réglage du nombre de coeurs actifs pour une machine"
-      parameters:
+      summary: "Réglage du nombre de coeurs actifs pour une liste de machines"
+      description: "Réglage du nombre de coeurs actifs pour une liste de machines"
+      parameters:    
         - in: query
-          name: host
-          description: hostname
-          required: true
-          schema:
-            type: string
-        - in: query
-          name: limit
-          description: le nb max de coeurs actifs
+          name: value
+          description: le nombre de coeurs actifs
           required: true
           schema:
             type: integer
+      requestBody:
+        description: hostnames
+        required: true
+        content:
+          application/json:
+            schema:
+                type: object
+                properties:
+                  hosts:
+                    type: array
+                    items:
+                      type: string
+                example: 
+                  hosts:
+                    - 'hostname_1'
+                    - 'hostname_2'
+                    - 'hostname_3'
       responses:
         '200':
           description: OK

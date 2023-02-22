@@ -23,4 +23,18 @@ describe('Nodes', () => {
         });
     });
   });
+
+  describe('set nb active threads', () => {
+    it('manage active threads', (done) => {
+      chai.request(server)
+        .post('/node/setNbActive')
+        .query({ value: value })
+        .end((err, res) => {
+          should.equal(err, null);
+          res.should.have.status(200);
+          res.body.should.be.an('array');
+          done();
+        });
+    });
+  });
 });

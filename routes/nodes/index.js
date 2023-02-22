@@ -16,16 +16,14 @@ router.get('/nodes',
   returnMsg);
 
 router.post('/node/setNbActive', [
-  query('host')
-    .exists().withMessage(createErrorMsg.getMissingParameterMsg('host')),
-  query('limit')
-    .exists().withMessage(createErrorMsg.getMissingParameterMsg('limit'))
+  query('value')
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('value'))
     .isInt({ min: 0 })
-    .withMessage(createErrorMsg.getInvalidParameterMsg('limit')),
+    .withMessage(createErrorMsg.getInvalidParameterMsg('value')),
 ],
 validateParams,
 pgClient.open,
-nodes.setNbActiveNodes,
+nodes.setNbActiveSessions,
 pgClient.close,
 returnMsg);
 

@@ -30,26 +30,22 @@ async function getAllNodes(req, res, next) {
   debug('fin');
 }
 
-async function setNbActiveNodes(req, res, next) {
-  debug('setNbActiveNodes');
+async function setNbActiveSessions(req, res, next) {
   const params = matchedData(req);
-  const { host } = params;
-  const { limit } = params;
-  debug(`host = ${host}`);
-  debug(`limit = ${limit}`);
-  await req.client.query('SELECT set_nb_active_nodes ($1, $2)', [host, limit])
+  const { value } = params;
+  const { hosts } = req.body;
+  await req.client.query('SELECT set_nb_active_sessions ($1, $2)', [hosts, value])
     .catch((error) => {
       req.error = {
         msg: error.toString(),
         code: 500,
-        function: 'setNbActiveNodes',
+        function: 'setNbActiveSessions',
       };
     });
   next();
-  debug('fin');
 }
 
 module.exports = {
   getAllNodes,
-  setNbActiveNodes,
+  setNbActiveSessions,
 };
