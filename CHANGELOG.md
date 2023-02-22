@@ -1,16 +1,16 @@
 # 📑 Changelog
 
-## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
+## [1.12.0](https://github.com/ign-gpao/api/tree/1.12.0) (2023-02-22)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.11.0...HEAD)
-
-### 📁 Other issues
-
-- homogeneiser routes \(reinit, delete...\) [\#45](https://github.com/ign-gpao/api/issues/45)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.11.0...1.12.0)
 
 ## [1.11.0](https://github.com/ign-gpao/api/tree/1.11.0) (2023-02-09)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.10.0...1.11.0)
+
+### 📁 Other issues
+
+- homogeneiser routes \(reinit, delete...\) [\#45](https://github.com/ign-gpao/api/issues/45)
 
 ### 📁 Other pull requests
 
