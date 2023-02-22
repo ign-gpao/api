@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Brique logicielle utilisé dans le projet GPAO
+Brique logicielle utilisée dans le projet GPAO
 
 ## Docker
 
