@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.13.0](https://github.com/ign-gpao/api/tree/1.13.0) (2023-02-23)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.12.0...1.13.0)
+
+### 📁 Other pull requests
+
+- add route setNbActiveSessions [\#47](https://github.com/ign-gpao/api/pull/47) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [1.12.0](https://github.com/ign-gpao/api/tree/1.12.0) (2023-02-22)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.11.0...1.12.0)
