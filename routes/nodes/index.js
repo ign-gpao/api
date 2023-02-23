@@ -13,13 +13,14 @@ router.get('/nodes',
   pgClient.close,
   returnMsg);
 
-router.post('/node/setNbActive',
+router.post('/node/setNbActive', [
   query('value')
     .exists().withMessage(createErrorMsg.getMissingParameterMsg('value'))
     .isInt({ min: 0 })
     .withMessage(createErrorMsg.getInvalidParameterMsg('value')),
   body('hosts')
     .exists().withMessage(createErrorMsg.getMissingParameterMsg('hosts')),
+],
 validateParams,
 pgClient.open,
 nodes.setNbActiveSessions,
