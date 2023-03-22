@@ -219,13 +219,13 @@ async function getProject(req, res, next) {
 }
 
 async function setPriority(req, res, next) {
+  const { ids } = req.body;
   const params = matchedData(req);
-  const { id } = params;
   const { priority } = params;
-  debug('id : ', id);
+  debug('ids : ', ids);
   debug('priority : ', priority);
-  await req.client.query('UPDATE projects SET priority=$1 WHERE id=$2',
-    [priority, id])
+  await req.client.query('UPDATE projects SET priority=$1 WHERE id = ANY($2::int[])',
+    [priority, ids])
     .then((results) => {
       req.result = results.rows;
     })
@@ -241,7 +241,7 @@ async function setPriority(req, res, next) {
 
 async function deleteProjects(req, res, next) {
   const { ids } = req.body;
-  debug('id : ', ids);
+  debug('ids : ', ids);
   await req.client.query('DELETE FROM projects WHERE id = ANY($1::int[])', [ids])
     .then((results) => { req.result = results.rows; })
     .catch((error) => {

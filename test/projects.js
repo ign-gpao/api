@@ -121,11 +121,15 @@ describe('Projects', () => {
   describe('set project priority', () => {
     it('should return an array', (done) => {
       chai.request(server)
-        .post(`/api/project/${idProject}/setPriority`)
+        .post('/api/projects/setPriority')
         .query({ priority: 'high' })
+        .send({
+          ids: [0, 1],
+        })
         .end((err, res) => {
           should.equal(err, null);
           res.should.have.status(200);
+          res.body.should.be.an('array');
           done();
         });
     });
