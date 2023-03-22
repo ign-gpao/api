@@ -271,42 +271,52 @@ paths:
       responses:
         '200':
           description: OK
-  '/project/{id}/setPriority':
-    post:
-     tags:
-       - projects
-     summary: "Changement de la priorité des jobs du projet"
-     parameters:
-        - in: path
-          name: id
-          description: l'identifiant du projet à modififier
-          required: true
-          schema:
-            type: integer
-        - in: query
-          name: priority
-          description: priority
-          required: true
-          schema:
-            type: string
-            enum:
-              - low
-              - normal
-              - high
-     responses:
-       '200':
-         description: OK
-       '404':
-         description: Not Found
   '/projects':
     get:
-     tags:
-       - projects
-     summary: "Récupération de tous les projets"
-     description: "Récupération de tous les projets quelque soit leur statut"
-     responses:
-       '200':
-         description: OK
+      tags:
+        - projects
+      summary: "Récupération de tous les projets"
+      description: "Récupération de tous les projets quelque soit leur statut"
+      responses:
+        '200':
+          description: OK
+  '/projects/setPriority':
+    post:
+      tags:
+        - projects
+      summary: "Changement de la priorité des jobs d'une liste de projets"
+      parameters:
+          - in: query
+            name: priority
+            description: priority
+            required: true
+            schema:
+              type: string
+              enum:
+                - low
+                - normal
+                - high
+      requestBody:
+        description: les ids des projets
+        required: true
+        content:
+          application/json:
+            schema:
+                type: object
+                properties:
+                  ids:
+                    type: array
+                    items:
+                      type: integer
+                example: 
+                  ids:
+                    - 1
+                    - 2
+      responses:
+          '200':
+            description: OK
+          '404':
+            description: Not Found
   '/projects/statusByJobs':
     get:
       tags:
@@ -332,7 +342,7 @@ paths:
       summary: "Suppression d'une liste de projets"
       description: "Supprime tous les projets d'une liste"
       requestBody:
-        description: la structure du projet
+        description: les ids des projets
         required: true
         content:
           application/json:

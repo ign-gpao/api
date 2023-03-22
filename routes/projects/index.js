@@ -65,11 +65,9 @@ project.getJobsOfProject,
 pgClient.close,
 returnMsg);
 
-router.post('/project/:id/setPriority',
-  param('id')
-    .exists().withMessage(createErrorMsg.getMissingParameterMsg('id'))
-    .isInt({ min: 1 })
-    .withMessage(createErrorMsg.getInvalidParameterMsg('id')),
+router.post('/projects/setPriority',
+  body()
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('body')),
   query('priority')
     .exists().withMessage(createErrorMsg.getMissingParameterMsg('priority'))
     .isIn(['low', 'normal', 'high'])
