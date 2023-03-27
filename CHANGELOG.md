@@ -1,5 +1,21 @@
 # 📑 Changelog
 
+## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.14.0...HEAD)
+
+### 📁 Other issues
+
+- adapter la route project/{id}/setPriority pour prendre une liste de projet en json [\#48](https://github.com/ign-gpao/api/issues/48)
+
+## [1.14.0](https://github.com/ign-gpao/api/tree/1.14.0) (2023-03-27)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.13.0...1.14.0)
+
+### 📁 Other pull requests
+
+- route setPriority for json [\#49](https://github.com/ign-gpao/api/pull/49) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [1.13.0](https://github.com/ign-gpao/api/tree/1.13.0) (2023-02-23)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.12.0...1.13.0)
