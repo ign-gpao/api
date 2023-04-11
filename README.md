@@ -42,3 +42,8 @@ export PGDATABASE=gpao
 ```
 3. Lancer la commande `npm run test-coveralls`
 
+## Licence
+
+Ce projet est sous licence CECILL-B (voir [LICENSE.md](https://github.com/ign-gpao/.github/blob/main/LICENSE.md)).
+
+[![IGN](https://github.com/ign-gpao/.github/blob/main/images/logo_ign.png)](https://www.ign.fr)
