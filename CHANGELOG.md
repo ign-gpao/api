@@ -1,16 +1,24 @@
 # 📑 Changelog
 
-## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
+## [1.16.0](https://github.com/ign-gpao/api/tree/1.16.0) (2023-04-11)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.14.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.15.0...1.16.0)
 
-### 📁 Other issues
+## [1.15.0](https://github.com/ign-gpao/api/tree/1.15.0) (2023-04-11)
 
-- adapter la route project/{id}/setPriority pour prendre une liste de projet en json [\#48](https://github.com/ign-gpao/api/issues/48)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.14.0...1.15.0)
+
+### 🐛 Bug fixes
+
+- Diminuer le volume de log de l'API [\#33](https://github.com/ign-gpao/api/issues/33)
 
 ## [1.14.0](https://github.com/ign-gpao/api/tree/1.14.0) (2023-03-27)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.13.0...1.14.0)
+
+### 📁 Other issues
+
+- adapter la route project/{id}/setPriority pour prendre une liste de projet en json [\#48](https://github.com/ign-gpao/api/issues/48)
 
 ### 📁 Other pull requests
 
