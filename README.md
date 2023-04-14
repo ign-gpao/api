@@ -34,10 +34,10 @@ Pour lancer les tests unitaires de l'api :
 1. Tuer l'api en cours
 2. Dans un terminal exporter les variables suivantes :
 ``` shell
-export PGHOST=localhost
-export PGPORT=5432
-export PGUSER=postgres
-export PGPASSWORD=postgres
+export PGHOST=host
+export PGPORT=port
+export PGUSER=user
+export PGPASSWORD=password
 export PGDATABASE=gpao
 ```
 3. Lancer la commande `npm run test-coveralls`
