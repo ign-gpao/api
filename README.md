@@ -22,7 +22,7 @@ L'installation et l’exécution d'une GPAO complète (database, api, monitor, e
 ### Prérequis
 
 1. Installer [nodejs](https://nodejs.org/en) et [npm](https://www.npmjs.com/) en suivant les procédures officielles propres à votre OS.
-2. Pour fonctionner, l'api nécessite d'avoir un serveur postgres installé avec le modèle de données, vous trouverez plus d'informations sur ce module [ici](https://github.com/ign-gpao/database).
+2. L'api nécessite d'avoir un serveur postgres installé avec le modèle de données pour fonctionner, vous trouverez plus d'informations sur ce module [ici](https://github.com/ign-gpao/database).
 
 ### Installation
 
