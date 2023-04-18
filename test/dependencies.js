@@ -101,7 +101,7 @@ describe('Projects', () => {
       chai.request(server)
         .get('/api/projects')
         .end((err, res) => {
-          idProject = JSON.parse(res.text)[0].id;
+          idProject = JSON.parse(res.text)[0].id_project;
           should.equal(err, null);
           res.should.have.status(200);
           res.body.should.be.an('array');
