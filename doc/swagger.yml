@@ -276,7 +276,7 @@ paths:
       tags:
         - projects
       summary: "Récupération de tous les projets"
-      description: "Récupération de tous les projets quelque soit leur statut"
+      description: "Récupération de tous les projets avec leurs informations sur le nombre de jobs par statut"
       responses:
         '200':
           description: OK
@@ -317,15 +317,6 @@ paths:
             description: OK
           '404':
             description: Not Found
-  '/projects/statusByJobs':
-    get:
-      tags:
-        - projects
-      summary: "Récupération du nombre de job pour chaque statut différents"
-      description: "Récupération de tous les projets avec le nombre de jobs par statut"
-      responses:
-        '200':
-          description: OK
   '/projects/status':
     get:
       tags:

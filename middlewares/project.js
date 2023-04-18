@@ -143,21 +143,6 @@ async function insertProjectFromJson(req, res, next) {
 }
 
 async function getAllProjects(req, res, next) {
-  await req.client.query('SELECT * FROM projects')
-    .then((results) => {
-      req.result = results.rows;
-    })
-    .catch((error) => {
-      req.error = {
-        msg: error.toString(),
-        code: 500,
-        function: 'getAllProjects',
-      };
-    });
-  next();
-}
-
-async function getStatusByJobs(req, res, next) {
   await req.client.query('SELECT * FROM view_project_status_by_jobs ORDER BY id_project DESC')
     .then((results) => {
       req.result = results.rows;
@@ -166,7 +151,7 @@ async function getStatusByJobs(req, res, next) {
       req.error = {
         msg: error.toString(),
         code: 500,
-        function: 'getStatusByJobs',
+        function: 'getAllProjects',
       };
     });
   next();
@@ -258,7 +243,6 @@ module.exports = {
   insertProjectFromJson,
   getAllProjects,
   getProject,
-  getStatusByJobs,
   getProjectStatus,
   getJobsOfProject,
   setPriority,
