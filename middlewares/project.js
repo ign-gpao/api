@@ -143,7 +143,7 @@ async function insertProjectFromJson(req, res, next) {
 }
 
 async function getAllProjects(req, res, next) {
-  await req.client.query('SELECT * FROM view_project_status_by_jobs ORDER BY id_project DESC')
+  await req.client.query('SELECT * FROM view_project_status_by_jobs ORDER BY project_id DESC')
     .then((results) => {
       req.result = results.rows;
     })
