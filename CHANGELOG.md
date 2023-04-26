@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.21.0](https://github.com/ign-gpao/api/tree/1.21.0) (2023-04-18)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.20.0...1.21.0)
+
+### 📁 Other pull requests
+
+- fusion des routes get/projects avec get/projects/statusByJobs [\#52](https://github.com/ign-gpao/api/pull/52) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [1.20.0](https://github.com/ign-gpao/api/tree/1.20.0) (2023-04-14)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.19.0...1.20.0)
