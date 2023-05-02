@@ -5,6 +5,7 @@ const {
 
 const validateParams = require('../../middlewares/validateParams');
 const createErrorMsg = require('../../middlewares/createErrorMsg');
+const validator = require('../../validator');
 const jobs = require('../../middlewares/jobs');
 const pgClient = require('../../middlewares/db/pgClient');
 const returnMsg = require('../../middlewares/returnMsg');
@@ -46,6 +47,11 @@ router.get('/jobs/status',
   returnMsg);
 
 router.post('/jobs/reinit',
+  body()
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('body'))
+    .custom(validator.checkIdsSchema)
+    .withMessage(createErrorMsg.getInvalidIdsSchema()),
+  validateParams,
   pgClient.open,
   jobs.reinitJobs,
   pgClient.close,
