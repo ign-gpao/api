@@ -3,6 +3,7 @@ const { body, query } = require('express-validator');
 
 const validateParams = require('../../middlewares/validateParams');
 const createErrorMsg = require('../../middlewares/createErrorMsg');
+const validator = require('../../validator');
 const nodes = require('../../middlewares/nodes');
 const pgClient = require('../../middlewares/db/pgClient');
 const returnMsg = require('../../middlewares/returnMsg');
@@ -18,8 +19,10 @@ router.post('/node/setNbActive', [
     .exists().withMessage(createErrorMsg.getMissingParameterMsg('value'))
     .isInt({ min: 0 })
     .withMessage(createErrorMsg.getInvalidParameterMsg('value')),
-  body('hosts')
-    .exists().withMessage(createErrorMsg.getMissingParameterMsg('hosts')),
+  body()
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('body'))
+    .custom(validator.checkHostsSchema)
+    .withMessage(createErrorMsg.getInvalidHostsSchema()),
 ],
 validateParams,
 pgClient.open,

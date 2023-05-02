@@ -61,7 +61,9 @@ returnMsg);
 
 router.post('/projects/setPriority',
   body()
-    .exists().withMessage(createErrorMsg.getMissingParameterMsg('body')),
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('body'))
+    .custom(validator.checkIdsSchema)
+    .withMessage(createErrorMsg.getInvalidIdsSchema()),
   query('priority')
     .exists().withMessage(createErrorMsg.getMissingParameterMsg('priority'))
     .isIn(['low', 'normal', 'high'])
@@ -73,6 +75,10 @@ router.post('/projects/setPriority',
   returnMsg);
 
 router.delete('/projects/delete',
+  body()
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('body'))
+    .custom(validator.checkIdsSchema)
+    .withMessage(createErrorMsg.getInvalidIdsSchema()),
   validateParams,
   pgClient.open,
   project.deleteProjects,
