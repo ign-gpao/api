@@ -35,6 +35,20 @@ L'installation et l’exécution d'une GPAO complète (database, api, monitor, e
 
 Une fois lancé vous pouvez tester le bon fonctionnement depuis la documentation swagger de l'API à l'adresse : http://localhost:8080/api/doc
 
+## Variables d'environnement
+
+La configuration de variables d'environnement propres à l'API est nécessaire pour son bon fonctionnement. Elles sont définies par défaut ou dans le script `start.sh` dans le cas d'un déploiement local mais sont à adapter en fonction de votre installation. En voici l'inventaire :
+
+| Variable | Obligatoire | Valeur par défaut | Commentaire |
+| --- | --- | --- | --- |
+| API_PORT | Non | 8080 | Port de l'API |
+| SERVER_HOSTNAME | Non | localhost | Nom de la machine qui héberge l'API |
+| PGHOST | Oui |    | Nom de la machine qui héberge la base de données |
+| PGPORT | Oui |    | Port pour la base de données |
+| PGUSER | Oui |    | User de connexion Postgresql |
+| PGPASSWORD  | Oui |    | Password de connexion Postgresql |
+| PGDATABASE  | Oui |    | Nom de la base GPAO |
+
 ## Pour les développeurs
 
 ### Analyse du code
