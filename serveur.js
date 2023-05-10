@@ -19,7 +19,7 @@ const PORT = process.env.API_PORT || 8080;
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({ limit: '500mb', extended: true }));
 
 app.use((req, res, next) => {
   debug.log(req.method, ' ', req.path, ' ', req.body);
