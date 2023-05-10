@@ -1,5 +1,21 @@
 # 📑 Changelog
 
+## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.24.0...HEAD)
+
+### 📁 Other issues
+
+- route deleteList : rajouter validator schema [\#43](https://github.com/ign-gpao/api/issues/43)
+
+## [1.24.0](https://github.com/ign-gpao/api/tree/1.24.0) (2023-05-10)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.23.0...1.24.0)
+
+### 📁 Other pull requests
+
+- schema validator setPriority, deletProjects, reinitJobs, setNbActiveS… [\#54](https://github.com/ign-gpao/api/pull/54) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [1.23.0](https://github.com/ign-gpao/api/tree/1.23.0) (2023-05-03)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.22.0...1.23.0)
