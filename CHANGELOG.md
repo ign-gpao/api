@@ -2,15 +2,27 @@
 
 ## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.24.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.25.0...HEAD)
 
 ### 📁 Other issues
 
-- route deleteList : rajouter validator schema [\#43](https://github.com/ign-gpao/api/issues/43)
+- Accepter de gros fichiers json \(\>50Mo\) [\#35](https://github.com/ign-gpao/api/issues/35)
+
+## [1.25.0](https://github.com/ign-gpao/api/tree/1.25.0) (2023-05-10)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.24.0...1.25.0)
+
+### 📁 Other pull requests
+
+- extension de la limite du bodyParser [\#55](https://github.com/ign-gpao/api/pull/55) ([ijeuffrard](https://github.com/ijeuffrard))
 
 ## [1.24.0](https://github.com/ign-gpao/api/tree/1.24.0) (2023-05-10)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.23.0...1.24.0)
+
+### 📁 Other issues
+
+- route deleteList : rajouter validator schema [\#43](https://github.com/ign-gpao/api/issues/43)
 
 ### 📁 Other pull requests
 
