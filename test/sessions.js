@@ -43,6 +43,20 @@ describe('Sessions', () => {
   });
 });
 
+describe('Get sessions by hostname', () => {
+  it('Get all session by hostname', (done) => {
+    const hostname = String(Date.now());
+    chai.request(server)
+      .get(`/api/sessions/${hostname}`)
+      .end((err, res) => {
+        should.equal(err, null);
+        res.should.have.status(200);
+        res.body.should.be.an('array');
+        done();
+      });
+  });
+});
+
 describe('Close session', () => {
   it('close a session', (done) => {
     chai.request(server)

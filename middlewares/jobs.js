@@ -84,7 +84,17 @@ async function updateJobStatus(req, res, next) {
   await req.client.query(
     'UPDATE jobs SET status = $1, log = CONCAT( log, CAST($2 AS VARCHAR) ), return_code = $4, end_date=NOW() WHERE id = $3', [status, log, id, returnCode],
   )
-    .then((results) => { req.result = results.rows; })
+    .then((results) => {
+      if (results.rowCount !== 1) {
+        req.error = {
+          msg: `Invalid Job Id : ${id}`,
+          code: 404,
+          function: 'appendLog',
+        };
+      } else {
+        req.result = results.rows;
+      }
+    })
     .catch((error) => {
       req.error = {
         msg: error.toString(),
@@ -126,8 +136,8 @@ async function appendLog(req, res, next) {
     .then((results) => {
       if (results.rowCount !== 1) {
         req.error = {
-          msg: 'Invalid Job Id',
-          code: 500,
+          msg: `Invalid Job Id : ${id}`,
+          code: 404,
           function: 'appendLog',
         };
       } else {

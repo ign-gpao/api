@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  query,
+  query, param,
 } = require('express-validator');
 
 const validateParams = require('../../middlewares/validateParams');
@@ -53,6 +53,15 @@ router.post('/sessions/close', [
 validateParams,
 pgClient.open,
 sessions.closeSessionByHostname,
+pgClient.close,
+returnMsg);
+
+router.get('/sessions/:hostname', [
+  param('hostname')
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('hostname'))],
+validateParams,
+pgClient.open,
+sessions.getSessionByHostname,
 pgClient.close,
 returnMsg);
 

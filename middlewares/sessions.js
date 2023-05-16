@@ -105,6 +105,27 @@ async function closeSessionByHostname(req, res, next) {
   debug('fin');
 }
 
+async function getSessionByHostname(req, res, next) {
+  debug('getSessionByHostname');
+  const params = matchedData(req);
+
+  const { hostname } = params;
+  debug(hostname);
+
+  await req.client.query('SELECT * FROM sessions WHERE host LIKE $1 ORDER BY id', [hostname])
+    .then((results) => { req.result = results.rows; })
+    .catch((error) => {
+      debug(error);
+      req.error = {
+        msg: error.toString(),
+        code: 500,
+        function: 'getSessionByHostname',
+      };
+    });
+  next();
+  debug('fin');
+}
+
 module.exports = {
   getAllSessions,
   getSessionStatus,
@@ -112,4 +133,5 @@ module.exports = {
   closeSession,
   cleanUnused,
   closeSessionByHostname,
+  getSessionByHostname,
 };
