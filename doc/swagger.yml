@@ -153,6 +153,10 @@ paths:
       responses:
         '200':
           description: OK
+        '404':
+          description: Le job n'est pas présent dans la base
+        '500':
+          description: Erreur interne
   '/job/{id}/appendLog':
     post:
       tags:
@@ -179,6 +183,10 @@ paths:
       responses:
         '200':
           description: OK
+        '404':
+          description: Le job n'est pas présent dans la base
+        '500':
+          description: Erreur interne
 
   '/project':
     put:
@@ -399,6 +407,22 @@ paths:
         - sessions
       summary: "Récupération de toutes les sessions"
       description: "Récupération de toutes les sessions enregistrées dans la table sessions"
+      responses:
+        '200':
+          description: OK
+  '/sessions/{hostname}':
+    get:
+      tags:
+        - sessions
+      summary: "Récupération de toutes les sessions lié à un host"
+      description: "Récupération de toutes les sessions enregistrées dans la table sessions lié à un host"
+      parameters:
+        - in: path
+          name: hostname
+          description: le nom de la machine de laquelle on souhaite récupérer les jobs
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK

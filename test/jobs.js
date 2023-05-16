@@ -183,7 +183,7 @@ describe('Append job log', () => {
   });
 });
 
-describe('Append job log with wrong id', () => {
+describe('Append job log with wrong id (-1)', () => {
   it('should failed', (done) => {
     chai.request(server)
       .post('/api/job/-1/appendLog')
@@ -196,14 +196,14 @@ describe('Append job log with wrong id', () => {
   });
 });
 
-describe('Append job log with wrong id', () => {
+describe('Append job log with wrong id (999)', () => {
   it('should failed', (done) => {
     chai.request(server)
       .post('/api/job/999/appendLog')
       .send({ log: 'test append' })
       .end((err, res) => {
         should.equal(err, null);
-        res.should.have.status(500);
+        res.should.have.status(404);
         done();
       });
   });
