@@ -2,15 +2,27 @@
 
 ## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.25.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.26.0...HEAD)
 
-### 📁 Other issues
+### 🐛 Bug fixes
 
-- Accepter de gros fichiers json \(\>50Mo\) [\#35](https://github.com/ign-gpao/api/issues/35)
+- Si un job est supprimé alors que le client tourne toujours le client boucle indéfiniment [\#57](https://github.com/ign-gpao/api/issues/57)
+
+## [1.26.0](https://github.com/ign-gpao/api/tree/1.26.0) (2023-05-17)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.25.0...1.26.0)
+
+### 📁 Other pull requests
+
+- Add new route /sessions/{hostname} and send return code [\#58](https://github.com/ign-gpao/api/pull/58) ([arnaudbirk](https://github.com/arnaudbirk))
 
 ## [1.25.0](https://github.com/ign-gpao/api/tree/1.25.0) (2023-05-10)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.24.0...1.25.0)
+
+### 📁 Other issues
+
+- Accepter de gros fichiers json \(\>50Mo\) [\#35](https://github.com/ign-gpao/api/issues/35)
 
 ### 📁 Other pull requests
 
