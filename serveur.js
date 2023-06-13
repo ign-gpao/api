@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const os = require('os');
 
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
@@ -14,7 +13,9 @@ const dependencies = require('./routes/dependencies');
 // const client = require('./routes/client');
 const maintenance = require('./routes/maintenance');
 
-const PORT = process.env.API_PORT || 8080;
+const API_PROTOCOL = process.env.API_PROTOCOL || 'http';
+const API_URL = process.env.API_URL || 'localhost';
+const API_PORT = process.env.API_PORT || 8080;
 
 const app = express();
 
@@ -32,8 +33,7 @@ const options = {
 };
 
 const swaggerDocument = YAML.load('./doc/swagger.yml');
-const hostname = process.env.SERVER_HOSTNAME || os.hostname();
-swaggerDocument.servers[0].url = `http://${hostname}:${PORT}/api`;
+swaggerDocument.servers[0].url = `${API_PROTOCOL}://${API_URL}:${API_PORT}/api`;
 swaggerDocument.info.version = process.env.npm_package_version;
 
 app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
@@ -46,8 +46,8 @@ app.use('/api', dependencies);
 // app.use('/api', client);
 app.use('/api/', maintenance);
 
-module.exports = app.listen(PORT, () => {
-  debug.log(`URL de l'api : http://localhost:${PORT}/api`);
-  debug.log(`URL de la documentation swagger : http://localhost:${PORT}/api/doc`);
+module.exports = app.listen(API_PORT, () => {
+  debug.log(`URL de l'api : ${API_PROTOCOL}://${API_URL}:${API_PORT}/api`);
+  debug.log(`URL de la documentation swagger : ${API_PROTOCOL}://${API_URL}:${API_PORT}/api/doc`);
   debug.log(`Version de l'api : ${process.env.npm_package_version}`);
 });
