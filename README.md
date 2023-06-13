@@ -41,8 +41,9 @@ La configuration de variables d'environnement propres à l'API est nécessaire p
 
 | Variable | Obligatoire | Valeur par défaut | Commentaire |
 | --- | --- | --- | --- |
-| API_PORT | Non | 8080 | Port de l'API |
-| SERVER_HOSTNAME | Non | localhost | Nom de la machine qui héberge l'API |
+| GPAO_API_URL | Non | localhost | Nom de la machine qui héberge l'API |
+| GPAO_API_PROTOCOL | Non | http | Protocole de l'API |
+| GPAO_API_PORT | Non | 8080 | Port de l'API |
 | PGHOST | Oui |    | Nom de la machine qui héberge la base de données |
 | PGPORT | Oui |    | Port pour la base de données |
 | PGUSER | Oui |    | User de connexion Postgresql |
