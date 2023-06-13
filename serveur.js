@@ -13,9 +13,9 @@ const dependencies = require('./routes/dependencies');
 // const client = require('./routes/client');
 const maintenance = require('./routes/maintenance');
 
-const API_PROTOCOL = process.env.API_PROTOCOL || 'http';
-const API_URL = process.env.API_URL || 'localhost';
-const API_PORT = process.env.API_PORT || 8080;
+const API_PROTOCOL = process.env.GPAO_API_PROTOCOL || 'http';
+const API_URL = process.env.GPAO_API_URL || 'localhost';
+const API_PORT = process.env.GPAO_API_PORT || 8080;
 
 const app = express();
 
