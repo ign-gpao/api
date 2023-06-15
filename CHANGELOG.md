@@ -1,16 +1,24 @@
 # 📑 Changelog
 
-## [Unreleased](https://github.com/ign-gpao/api/tree/HEAD)
+## [1.27.0](https://github.com/ign-gpao/api/tree/1.27.0) (2023-06-15)
 
-[Full Changelog](https://github.com/ign-gpao/api/compare/1.26.0...HEAD)
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.26.0...1.27.0)
 
-### 🐛 Bug fixes
+### 📁 Other issues
 
-- Si un job est supprimé alors que le client tourne toujours le client boucle indéfiniment [\#57](https://github.com/ign-gpao/api/issues/57)
+- Paramétrage de l'URL serveur dans Swagger [\#50](https://github.com/ign-gpao/api/issues/50)
+
+### 📁 Other pull requests
+
+- ajout var API\_PROTOCOL API\_PORT API\_URL [\#59](https://github.com/ign-gpao/api/pull/59) ([ijeuffrard](https://github.com/ijeuffrard))
 
 ## [1.26.0](https://github.com/ign-gpao/api/tree/1.26.0) (2023-05-17)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.25.0...1.26.0)
+
+### 🐛 Bug fixes
+
+- Si un job est supprimé alors que le client tourne toujours le client boucle indéfiniment [\#57](https://github.com/ign-gpao/api/issues/57)
 
 ### 📁 Other pull requests
 
