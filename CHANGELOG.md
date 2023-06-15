@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.28.0](https://github.com/ign-gpao/api/tree/1.28.0) (2023-06-15)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.27.0...1.28.0)
+
+### 📁 Other pull requests
+
+- ajout idle\_requested [\#60](https://github.com/ign-gpao/api/pull/60) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [1.27.0](https://github.com/ign-gpao/api/tree/1.27.0) (2023-06-15)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.26.0...1.27.0)
