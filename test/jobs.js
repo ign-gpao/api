@@ -143,6 +143,23 @@ describe('Jobs', () => {
     });
   });
 
+  describe('set jobs tags', () => {
+    it('should return an array', (done) => {
+      chai.request(server)
+        .post('/api/jobs/setTags')
+        .query({ priority: 'tag' })
+        .send({
+          ids: [idJob],
+        })
+        .end((err, res) => {
+          should.equal(err, null);
+          res.should.have.status(200);
+          res.body.should.be.an('array');
+          done();
+        });
+    });
+  });
+
   describe('Get job/status', () => {
     it('should return an array', (done) => {
       chai.request(server)

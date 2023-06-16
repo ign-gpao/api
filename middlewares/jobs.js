@@ -122,6 +122,30 @@ async function reinitJobs(req, res, next) {
   next();
 }
 
+async function setTags(req, res, next) {
+  const { ids } = req.body;
+  const params = matchedData(req);
+  let { tags } = params;
+  try {
+    tags = tags.split(',');
+  } catch {
+    tags = [];
+  }
+  await req.client.query('UPDATE jobs SET tags=$1 WHERE id = ANY($2::int[]) AND status = ANY($3::status[])',
+    [tags, ids, ['ready', 'waiting', 'failed']])
+    .then((results) => {
+      req.result = results.rows;
+    })
+    .catch((error) => {
+      req.error = {
+        msg: error.toString(),
+        code: 404,
+        function: 'setTags',
+      };
+    });
+  next();
+}
+
 async function appendLog(req, res, next) {
   const params = matchedData(req);
   const { id } = params;
@@ -162,5 +186,6 @@ module.exports = {
   getJob,
   updateJobStatus,
   reinitJobs,
+  setTags,
   appendLog,
 };
