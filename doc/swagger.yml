@@ -55,6 +55,41 @@ paths:
       responses:
         '200':
           description: OK
+  '/jobs/setTags':
+    post:
+      tags:
+        - jobs
+      summary: "Changement des tags d'une liste de jobs"
+      description: "Change les tags d'une liste de jobs. Les anciens tags sont écrasés par la nouvelle liste de tags. Ne rien mettre pour supprimer tous les tags. S'applique uniquement aux jobs ready/waiting/failed"
+      parameters:
+        - in: query
+          name: tags
+          description: liste des nouveaux tags (séparés par une virgule, sans espaces)
+          required: false
+          schema:
+            type: string
+          example: "tag1,tag2"
+      requestBody:
+        description: les ids des jobs
+        required: true
+        content:
+          application/json:
+            schema:
+                type: object
+                properties:
+                  ids:
+                    type: array
+                    items:
+                      type: integer
+                example: 
+                  ids:
+                    - 1
+                    - 2
+      responses:
+          '200':
+            description: OK
+          '404':
+            description: Not Found
   '/jobs/status':
     get:
       tags:

@@ -57,6 +57,18 @@ router.post('/jobs/reinit',
   pgClient.close,
   returnMsg);
 
+router.post('/jobs/setTags',
+  body()
+    .exists().withMessage(createErrorMsg.getMissingParameterMsg('body'))
+    .custom(validator.checkIdsSchema)
+    .withMessage(createErrorMsg.getInvalidIdsSchema()),
+  query('tags'),
+  validateParams,
+  pgClient.open,
+  jobs.setTags,
+  pgClient.close,
+  returnMsg);
+
 router.post('/job', [
   body('log').exists().withMessage(createErrorMsg.getMissingParameterMsg('log')),
   query('status')

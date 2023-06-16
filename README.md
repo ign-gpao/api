@@ -12,7 +12,7 @@ docker pull gpao/api-gpao
 ```
 et peut être lancée avec :
 ``` shell
-docker run -ti --rm -p 8080:8080 -e SERVER_HOSTNAME=`hostname` gpao/api-gpao
+docker run -ti --rm -p 8080:8080 -e GPAO_API_URL=`api_url_hostname` gpao/api-gpao
 ```
 
 L'installation et l’exécution d'une GPAO complète (database, api, monitor, etc...) via Docker est décrite [ici](https://github.com/ign-gpao/docker).
