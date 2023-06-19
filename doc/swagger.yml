@@ -64,10 +64,11 @@ paths:
       parameters:
         - in: query
           name: tags
-          description: liste des nouveaux tags (séparés par une virgule, sans espaces)
+          description: liste des nouveaux tags (caractères alphanumériques séparés par une virgule, sans espaces)
           required: false
           schema:
             type: string
+            pattern: '^(\w+,{1}){0,}\w+$'
           example: "tag1,tag2"
       requestBody:
         description: les ids des jobs
