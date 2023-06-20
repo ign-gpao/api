@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.29.0](https://github.com/ign-gpao/api/tree/1.29.0) (2023-06-20)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.28.0...1.29.0)
+
+### 📁 Other pull requests
+
+- 83 permettre de modifier les tags dun job [\#61](https://github.com/ign-gpao/api/pull/61) ([ijeuffrard](https://github.com/ijeuffrard))
+
 ## [1.28.0](https://github.com/ign-gpao/api/tree/1.28.0) (2023-06-15)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.27.0...1.28.0)
