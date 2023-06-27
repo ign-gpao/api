@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.30.0](https://github.com/ign-gpao/api/tree/1.30.0) (2023-06-27)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.29.0...1.30.0)
+
+### 📁 Other pull requests
+
+- update sessions activity [\#62](https://github.com/ign-gpao/api/pull/62) ([arnaudbirk](https://github.com/arnaudbirk))
+
 ## [1.29.0](https://github.com/ign-gpao/api/tree/1.29.0) (2023-06-20)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.28.0...1.29.0)
