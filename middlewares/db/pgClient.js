@@ -34,7 +34,7 @@ async function close(req, res, next) {
   debug('close pg connection...');
   try {
     if (req.error) {
-      debug('rollback');
+      debug(`rollback : ${req.error.msg}`);
       await req.client.query('ROLLBACK');
     } else {
       debug('commit');
