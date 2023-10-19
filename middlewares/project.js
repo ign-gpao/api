@@ -64,19 +64,19 @@ async function insertJob(name, command, idProject, tags, req) {
   return idJob;
 }
 
-async function insertJobDependency(upstream, downstream, req) {
-  debug(`Insertion  de la dependance entre le job ${upstream} et ${downstream}`);
+async function insertJobDependencies(values, downstream, req) {
+  debug(`Insertion du bloc de dependances pour le job : ${downstream}`);
   await req.client.query(
-    'INSERT INTO jobdependencies (upstream, downstream) VALUES ($1, $2)', [upstream, downstream],
+    `INSERT INTO jobdependencies (upstream, downstream) VALUES ${values}`,
   )
     .catch((error) => {
       req.error = {
         msg: error.toString(),
         code: 500,
-        function: 'insertJobDependency',
+        function: 'insertJobDependencies',
       };
     });
-  debug('Fin insertion job dependence');
+  debug('Fin insertion job dependences');
 }
 
 async function insertProjectDependency(upstream, downstream, req) {
@@ -114,13 +114,14 @@ async function insertProjectFromJson(req, res, next) {
       debug(`id_job = ${idJob}`);
       // Si il y a des dépendances entre les jobs
       if (job.deps) {
-        /* eslint-disable no-restricted-syntax */
+        /* eslint no-undef-init: "error" */
+        let values = '';
         for (const dep of job.deps) {
           const upstream = req.idJobs[dep.id];
-          const downstream = idJob;
-          /* eslint-disable no-await-in-loop */
-          await insertJobDependency(upstream, downstream, req);
+          if (dep !== job.deps[0]) values += ',';
+          values += `(${upstream},${idJob})`;
         }
+        await insertJobDependencies(values, idJob, req);
       }
     }
     if (project.deps) {
