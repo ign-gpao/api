@@ -1,5 +1,21 @@
 # 📑 Changelog
 
+## [1.32.0](https://github.com/ign-gpao/api/tree/1.32.0) (2023-10-27)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.31.0...1.32.0)
+
+### 📁 Other pull requests
+
+- 63 optimisation des requêtes dinsertion [\#64](https://github.com/ign-gpao/api/pull/64) ([arnaudbirk](https://github.com/arnaudbirk))
+
+## [1.31.0](https://github.com/ign-gpao/api/tree/1.31.0) (2023-10-27)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.30.0...1.31.0)
+
+### 🐛 Bug fixes
+
+- Optimisation des requêtes d'insertion [\#63](https://github.com/ign-gpao/api/issues/63)
+
 ## [1.30.0](https://github.com/ign-gpao/api/tree/1.30.0) (2023-06-27)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.29.0...1.30.0)
