@@ -49,7 +49,7 @@ async function insertJob(name, command, idProject, tags, geometry, req) {
   debug(`Insertion du job ${name}`);
   let idJob;
   try {
-    const results = await req.client.query('INSERT INTO jobs (name, command, id_project, tags, geometry) VALUES ($1, $2, $3, $4, $5) RETURNING id', [name, command, idProject, tags, geometry]);
+    const results = await req.client.query('INSERT INTO jobs (name, command, id_project, tags, geometry) VALUES ($1, $2, $3, $4, ST_Transform($5, 4326)) RETURNING id', [name, command, idProject, tags, geometry]);
     idJob = results.rows[0].id;
     req.idJobs.push(idJob);
   } catch (error) {
