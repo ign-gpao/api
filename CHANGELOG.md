@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.33.0](https://github.com/ign-gpao/api/tree/1.33.0) (2026-04-15)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.32.0...1.33.0)
+
+### 📁 Other pull requests
+
+- optimisation of project dependencies request \(5s to 1s on big database\) [\#68](https://github.com/ign-gpao/api/pull/68) ([yoann-apel](https://github.com/yoann-apel))
+
 ## [1.32.0](https://github.com/ign-gpao/api/tree/1.32.0) (2023-10-27)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.31.0...1.32.0)
