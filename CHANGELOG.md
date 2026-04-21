@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.34.0](https://github.com/ign-gpao/api/tree/1.34.0) (2026-04-21)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.33.0...1.34.0)
+
+### 📁 Other pull requests
+
+- revert previous optimisation as it can be done in the database view [\#69](https://github.com/ign-gpao/api/pull/69) ([gliegard](https://github.com/gliegard))
+
 ## [1.33.0](https://github.com/ign-gpao/api/tree/1.33.0) (2026-04-15)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.32.0...1.33.0)
