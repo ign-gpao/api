@@ -176,7 +176,7 @@ async function getProjectStatus(req, res, next) {
 async function getJobsOfProject(req, res, next) {
   const params = matchedData(req);
   const { id } = params;
-  await req.client.query('SELECT * FROM view_jobs WHERE job_id_project=$1', [id])
+  await req.client.query('SELECT * FROM view_jobs_with_host WHERE job_id_project=$1', [id])
     .then((results) => { req.result = results.rows; })
     .catch((error) => {
       req.error = {
