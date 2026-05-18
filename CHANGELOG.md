@@ -1,5 +1,13 @@
 # 📑 Changelog
 
+## [1.35.0](https://github.com/ign-gpao/api/tree/1.35.0) (2026-05-18)
+
+[Full Changelog](https://github.com/ign-gpao/api/compare/1.34.0...1.35.0)
+
+### 📁 Other pull requests
+
+- function getJobsOfProject uses view view\_jobs\_with\_host to have Host information [\#70](https://github.com/ign-gpao/api/pull/70) ([gliegard](https://github.com/gliegard))
+
 ## [1.34.0](https://github.com/ign-gpao/api/tree/1.34.0) (2026-04-21)
 
 [Full Changelog](https://github.com/ign-gpao/api/compare/1.33.0...1.34.0)
